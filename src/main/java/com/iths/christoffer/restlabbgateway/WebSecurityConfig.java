@@ -31,20 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET).anonymous()
                 .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()
-//                .antMatchers(HttpMethod.PATCH, jwtConfig.getUri()).hasRole("ADMIN")//.permitAll()
-//                .antMatchers(HttpMethod.PUT, jwtConfig.getUri()).hasRole("ADMIN")//.permitAll()
-//                .antMatchers(HttpMethod.DELETE, jwtConfig.getUri()).hasRole("ADMIN")//.permitAll()
-                .antMatchers("/cinemas" + "/api/v1/cinemas/admin/**").hasRole("ADMIN")
+                .antMatchers("/cinemas" + "/api/v1/cinemas/**").hasRole("ADMIN")
+                .antMatchers("/movies" + "/api/v1/movies/**").hasRole("ADMIN")
                 .anyRequest().authenticated();//.and().httpBasic();
-
-//        http.authorizeRequests().anyRequest().permitAll();
-//        http.authorizeRequests()
-////                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/**").hasRole("USER")
-//                .and().httpBasic();
-        //.antMatchers("/api/v1/cinemas").hasAnyRole()
-//                .antMatchers("/Cinemas").hasAnyRole()
-//                .and().httpBasic();
     }
 
     @Bean
